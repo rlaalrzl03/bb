@@ -193,7 +193,7 @@ String realPath = request.getRealPath("/test");
 					<a href="http://freewebsitetemplates.com/go/googleplus/" class="googleplus">googleplus</a>
 					<a href="http://pinterest.com/fwtemplates/" class="pinterest">pinterest</a>
 				</div>
-				<p>&copy; 2023 Freeeze. All Rights Reserved.</p>
+				<p>&copy; 2023 Freeeze. All Rights Reserved111111111.</p>
 			</div>
 		</div>
 	</div>
