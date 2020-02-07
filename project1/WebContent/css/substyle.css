@@ -1,0 +1,53 @@
+@CHARSET "UTF-8";
+.login_join{
+	text-align:right;
+	
+}
+
+
+.memberjoin div{
+	width:600px;
+	height:400px;
+	margin:auto;
+	text-align: center;	 
+	
+	padding: 20px;
+	font-size: 20px;
+	}
+	
+.memberlogin div{
+	
+	width:600px;
+	
+	margin:auto;
+	text-align: center;	 
+	padding: 20px;
+	font-size: 20px;
+	}
+#notice{
+	text-align: center;
+	margin: auto;
+
+		
+}
+#notice td {
+	padding: 30px;
+}
+
+#noticeButton{
+	float: right;
+	both: cleat;
+}
+
+.m{
+	
+	border:solid 3px black;
+	margin:auto;
+	text-align: center;	 
+	
+	padding: 20px;
+	font-size: 20px;
+	}
+	
+
+

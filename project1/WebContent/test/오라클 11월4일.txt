@@ -1,0 +1,20 @@
+-DB의 모든 정보를 oracle이 보기 쉬운 형태로 기록해놓은 테이블
+
+2. Data Dictionary views
+-Base table을 사용자가 보기쉬운 혀앹로 만들어 놓은 뷰
+-읽기전용(select 만 가능)
+-Data Dictionary views종류
+
+1)user_xxx : 내가 소유한 object 정보 조회
+	     ex)user_name, user_views
+
+2)all_xxx: 내가 소유하거나 접근 가능한 Object 정보 조회
+            ex)all_tables, all_views
+
+3)dba_xxx: DB의 모든정보 조회, *DBA만 사용가능함*(DB관리자만 사용가능),실시간X
+           ex)dba_tables , dba_users(db에 조재하는 모든 user정보)
+              dba_data_files
+
+4)v$xxx: DB의 모든정보조회, *DBA만 사용가능함*(DB관리자만 사용가능),실시간O
+          ex)v$datafiles , v$session
+

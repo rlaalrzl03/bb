@@ -1,0 +1,98 @@
+MySql설치후 해야할 작업
+
+순서1. 윈도우 운영체제에 환경변수 셋팅
+
+환경변수 설정 이유 :  MySQL설치후에 환경변수를 설정 해주어야  명령프롬포터 창에서
+	          mysql.exe파일과, mysqldump.exe 파일등을 경로에 접근 없이
+		  바로 사용할수 있다.
+
+1. 내PC 마우스 오른쪽 클릭 ->
+2. 속성 클릭 ->
+3. 고급시스템 설정 클릭->
+4. 시스템 속성 창의  <고급탭>의 [환경변수]버튼 클릭->
+5. 환경변수 창의 시스템변수 공간에  Path변수를 찾아서 [편집]버튼 클릭->
+6. 주소 마지막에 추가 ->  ;C:\Program Files\MySQL\MySQL Server 5.6\bin 추가
+
+
+순서2. 실습
+//root 관리자 계정으로MySQL접속
+
+mysql -u root -p 엔터
+1234 엔터
+
+//database 리스트 확인
+show databases;
+
+//기본적으로 만들어져 있는 데이터베이스중..
+//MySql이라는 이름의 데이터베이스를 사용하기 위해 선택
+use mysql;
+
+//table list 확인 
+show tables;
+
+//mysql데이터 베이스의 user 테이블에 이미 생성된 계정확인
+ select host, user from user;
+
+//참고 -> 계정을 생성할때 특정IP혹은 127.0.0.1(localhost)를 지정하거나
+//       %를 지정하여 외부접속을 허용할수 있다.
+
+
+//사용자 계정 생성
+create user '계정아이디'@'접속위치' identified by '패스워드";
+
+create user 'user'@'127.0.0.1' identified by '1234';
+create user 'user'@'%' identyfied by '1234';
+
+//user 계정 권한 주기
+	grant all privileged on DB이름, 데이블 to '계정아이디'@'접속위치';
+	//127.0.0.1(localhost)는 내부에서만 접속가능
+EX1) 	grant all privileged on TableName.* to 'user'@'localhost'; 특정IP에서만 db접근가능
+EX1) 	grant all privileged on TableName.* to 'user'@'%'; 모든 컴퓨터에서Db접근가능
+	
+//user 계정 권환 적용
+	flush privileges;
+
+
+//user 계정 권환 확인
+	show geants for 'user'@'접속위치';
+
+//계정 삭제
+	drop user '계정아이디'@'접속위치';
+EX1)    drop user 'user1'@'%';
+
+//권한 삭제
+	revoke all on DB이름.테이블 FROM'계정아이디'@'접속위치;
+--------------------------------------------------------------------------------------------
+
+//새로운 데이터베이스 생성 및 데이터 베이스에 저장되는 한글데이터 깨짐 방지를 위한
+//문자열셋 UTF-8지정
+create database jspbeginner default character set utf8;
+
+ /*
+ localhost 번의IP를 가진 시스템에서만 접근이 가능한 'jspid'계정을 추가하고
+ 패스워드는 'jsppass'로 하여 계정을 생성ㅁ함.
+ 그리고 또한 'jspbeginner'데이터베이스의 모든(*)테이블에 SELECT,INSERT,DELETE.....
+ 가능한 모든 권환을 부여함.
+*/
+
+grant select,insert,update,delete,create,alter,drop on
+jspbeginner4.* to 'jspid'@'localhost'
+identified by 'jsppass';
+
+grant select,insert,update,delete,create,alter,drop on
+jspbeginner.* to 'jspid'@'%'
+identified by 'jsppass';
+
+//MYSQL DBMS 빠져나가기
+exit 또는 quit
+
+//MYSQL DBMS jspid계정으로 접속
+mysql -u jspid -p 엔터키
+jsppass
+
+//jspbegginer데이터 베이스 선택
+use jspbeginner;
+
+//jspbeginner데이터 베이스 내부에 테이블 목록 출력
+show tables;
+

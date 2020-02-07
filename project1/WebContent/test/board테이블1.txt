@@ -1,0 +1,49 @@
+create table board(
+num int primary key,
+name varchar(20),
+passwd varchar(20),
+subject varchar(50),
+content varchar(2000),
+file varchar(50),
+re_ref int,
+re_lev int,
+re_seq int,
+readcount int,
+date datetime,
+ip varchar(20)
+);
+
+create table board(
+num int primary key, //글번호
+name varchar(20), //글쓴이
+passwd varchar(20),//글 패스워드
+subject varchar(50),//글제목
+content varchar(2000),//글내용
+file varchar(50),//저장 파일이름
+re_ref int,//부모글과 그로부터 파생된 자식글들이 같은 값을 가지기 위한 필드 
+re_lev int,//같은 group내에서의 깊이 (들여쓰기
+re_seq int,//같은 group 글들 내에서의 순서
+readcount int, //글 조회수
+date datetime,//글쓴 날짜 저장
+ip varchar(20) //글쓴사람의 ip주소 저장
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
